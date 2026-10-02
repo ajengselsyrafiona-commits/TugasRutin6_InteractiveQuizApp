@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Quiz App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ===== HEADER / NAVBAR ===== -->
+    <header class="navbar">
+        <div class="nav-left">
+            <span class="nav-label">10 — TUGAS</span>
+        </div>
+        <div class="nav-right">
+            <button id="darkModeToggle" class="dark-mode-btn" title="Toggle Dark Mode">
+                🌙
+            </button>
+        </div>
+    </header>
+
+    <!-- ===== MAIN CONTAINER ===== -->
+    <main class="container">
+
+        <!-- LAYAR 1: START SCREEN -->
+        <section id="startScreen" class="screen active">
+            <div class="start-content">
+                <span class="task-label">— TUGAS RUTIN 6</span>
+                <h1>📌 Interactive Quiz App — <span class="highlight">Tugas Rutin 6</span></h1>
+                <p class="subtitle">Uji pengetahuanmu dengan 5 pertanyaan menarik!</p>
+
+                <div class="category-select">
+                    <label for="categorySelect">Pilih Kategori:</label>
+                    <select id="categorySelect">
+                        <option value="all">🎲 Semua Kategori (Random)</option>
+                        <option value="teknologi"> Teknologi</option>
+                        <option value="sains">🔬 Sains</option>
+                        <option value="sejarah"> Sejarah</option>
+                        <option value="geografi">🌍 Geografi</option>
+                    </select>
+                </div>
+
+                <div class="high-score-display">
+                    <span>🏆 High Score:</span>
+                    <strong id="highScoreDisplay">0</strong>
+                </div>
+
+                <button id="startBtn" class="btn btn-primary" onclick="startQuiz()">🚀 Mulai Quiz</button>
+            </div>
+        </section>
+
+        <!-- LAYAR 2: QUIZ SCREEN -->
+        <section id="quizScreen" class="screen">
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-info">
+                    <span id="questionCounter">Soal 1 dari 5</span>
+                    <span id="scoreDisplay">Skor: 0</span>
+                </div>
+                <div class="progress-bar">
+                    <div id="progressFill" class="progress-fill"></div>
+                </div>
+            </div>
+
+            <!-- Timer -->
+            <div class="timer-container">
+                <div class="timer-icon">⏱️</div>
+                <div id="timerBar" class="timer-bar">
+                    <div id="timerFill" class="timer-fill"></div>
+                </div>
+                <span id="timerText" class="timer-text">15s</span>
+            </div>
+
+            <!-- Question Card -->
+            <div class="question-card" id="questionCard">
+                <span class="question-category" id="questionCategory">Kategori</span>
+                <h2 id="questionText" class="question-text">Pertanyaan akan muncul di sini...</h2>
+                <div id="optionsContainer" class="options-container">
+                    <!-- Pilihan jawaban di-render via JS -->
+                </div>
+            </div>
+
+            <!-- Feedback -->
+            <div id="feedback" class="feedback hidden">
+                <span id="feedbackIcon"></span>
+                <span id="feedbackText"></span>
+            </div>
+
+            <!-- Next Button -->
+            <button id="nextBtn" class="btn btn-primary hidden">Soal Berikutnya ️</button>
+        </section>
+
+        <!-- LAYAR 3: RESULT SCREEN -->
+        <section id="resultScreen" class="screen">
+            <div class="result-content">
+                <h1>🎉 Quiz Selesai!</h1>
+
+                <div class="result-score">
+                    <div class="score-circle">
+                        <span id="finalScore">0</span>
+                        <small>dari 5</small>
+                    </div>
+                </div>
+
+                <p id="resultMessage" class="result-message">Pesan hasil...</p>
+
+                <div class="result-stats">
+                    <div class="stat">
+                        <span class="stat-label">✅ Benar</span>
+                        <span id="correctCount" class="stat-value correct">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label"> Salah</span>
+                        <span id="wrongCount" class="stat-value wrong">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label"> High Score</span>
+                        <span id="resultHighScore" class="stat-value high">0</span>
+                    </div>
+                </div>
+
+                <div class="result-buttons">
+                    <button id="restartBtn" class="btn btn-primary">🔄 Main Lagi</button>
+                    <button id="homeBtn" class="btn btn-secondary">🏠 Kembali ke Beranda</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
